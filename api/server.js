@@ -15,8 +15,7 @@ const sessionConfiguration = {
         secure: process.env.SECURE_COOKIES || false,
     },
     resave: false,
-    saveUninitialized: true,
-    store: new KnexSessionStore({})
+    saveUninitialized: true
 }
 
 server.use(helmet());
