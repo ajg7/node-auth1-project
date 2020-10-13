@@ -24,8 +24,10 @@ server.use(express.json());
 server.use(cors());
 server.listen(session(sessionConfiguration));
 
+
+
 server.get("/", (request, response) => {
-    response.status(200).json({ Frankenstein: "It's Alive", session: req.session });
+    response.status(200).json({ Frankenstein: "It's Alive", session: request.session });
 });
 
 module.exports = server;

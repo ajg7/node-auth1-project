@@ -4,8 +4,12 @@ module.exports = {
 
   development: {
     client: 'sqlite3',
+    useNullAsDefault: true,
     connection: {
-      filename: './dev.sqlite3'
+      filename: './database/auth.db3'
+    },
+    migrations: {
+      directory: './database/migrations'
     }
   },
 
@@ -21,7 +25,7 @@ module.exports = {
       max: 10
     },
     migrations: {
-      tableName: 'knex_migrations'
+      tableName: './database/migrations'
     }
   },
 
