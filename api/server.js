@@ -2,9 +2,13 @@ const express = require("express");
 const helmet = require("helmet");
 const cors = require("cors");
 const session = require("express-session");
-
-
 const server = express();
+const protected = require("../auth/protected-mw");
+
+const UsersRouter = require("../routers/user-router")
+const AuthRouter = require("../auth/login-router");
+
+
 
 const sessionConfiguration = {
     name: "Dumbo",
@@ -21,8 +25,9 @@ const sessionConfiguration = {
 server.use(helmet());
 server.use(express.json());
 server.use(cors());
-server.listen(session(sessionConfiguration));
-
+server.use(session(sessionConfiguration));
+server.use("/users", protected, UsersRouter);
+server.use("/auth", protected, UsersRouter);
 
 
 server.get("/", (request, response) => {
